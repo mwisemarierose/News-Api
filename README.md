@@ -4,7 +4,7 @@ A production-ready RESTful News API built with **Node.js + TypeScript**, impleme
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 | Layer | Technology | Why |
 |---|---|---|
@@ -21,7 +21,7 @@ A production-ready RESTful News API built with **Node.js + TypeScript**, impleme
 
 ---
 
-## 📦 Setup & Installation
+##  Setup & Installation
 
 ### Prerequisites
 - Node.js v18+
@@ -31,8 +31,9 @@ A production-ready RESTful News API built with **Node.js + TypeScript**, impleme
 ### 1. Clone & Install
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/mwisemarierose/News-Api.git
 cd news-api
+cd backend
 npm install
 ```
 
@@ -82,7 +83,7 @@ npm start
 
 ---
 
-## 🧪 Running Tests
+##  Running Tests
 
 Tests use **Jest + Supertest** with the Prisma client fully mocked — no real database or Redis connection needed.
 
@@ -96,7 +97,7 @@ npm run test:coverage
 
 ---
 
-## 📡 API Endpoints
+##  API Endpoints
 
 ### Auth
 | Method | Endpoint | Auth | Description |
@@ -126,7 +127,7 @@ npm run test:coverage
 
 ---
 
-## 📊 Analytics Engine
+##  Analytics Engine
 
 ReadLog entries are aggregated into `DailyAnalytics` via a **BullMQ job queue**:
 
@@ -137,13 +138,13 @@ ReadLog entries are aggregated into `DailyAnalytics` via a **BullMQ job queue**:
 
 ---
 
-## 🔐 Read-Log Rate Limiting (Bonus)
+##  Read-Log Rate Limiting (Bonus)
 
 To prevent a single user from generating 100 ReadLog entries in 10 seconds, `GET /articles/:id` enforces a **10 requests/minute** rate limit keyed by **IP + userId** (or `guest` for unauthenticated requests). Requests exceeding this return `429 Too Many Requests`.
 
 ---
 
-## 🗂 Project Structure
+##  Project Structure
 
 ```
 src/
