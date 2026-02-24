@@ -3,7 +3,7 @@ import { AppError } from "../../middleware/errorHandler";
 import { CreateArticleInput, UpdateArticleInput } from "./article.validator";
 import { ArticleStatus, Prisma } from "@prisma/client";
 
-// ─── Author CRUD ──────────────────────────────────────────────────────────────
+//  Author CRUD 
 
 export async function createArticle(authorId: string, input: CreateArticleInput) {
     return prisma.article.create({
@@ -76,7 +76,7 @@ export async function softDeleteArticle(id: string, authorId: string) {
     });
 }
 
-// ─── Public Feed ──────────────────────────────────────────────────────────────
+//Public Feed 
 
 export async function getPublishedArticles(
     page: number,
@@ -109,7 +109,7 @@ export async function getPublishedArticles(
     return { articles, total };
 }
 
-// ─── Article Detail + Read Tracking ──────────────────────────────────────────
+//  Article Detail + Read Tracking 
 
 export async function getArticleById(id: string, readerId?: string) {
     const article = await prisma.article.findUnique({
@@ -147,7 +147,7 @@ export async function getArticleById(id: string, readerId?: string) {
     return article;
 }
 
-// ─── Shared Select ────────────────────────────────────────────────────────────
+//  Shared Select
 
 const articleSelect = {
     id: true,

@@ -25,9 +25,7 @@ describe("Analytics Routes", () => {
     // ─── GET /author/dashboard ────────────────────────────────────────────────
 
     describe("GET /author/dashboard", () => {
-        it("should return paginated dashboard with TotalViews", async () => {
-            // $transaction with array arg returns PrismaPromise[] result
-            // jest-mock-extended resolves to whatever we provide here
+        it("should return paginated dashboard with TotalViews summed from DailyAnalytics", async () => {
             (prismaMock.$transaction as jest.Mock).mockResolvedValue([mockDashboardRows, 1]);
 
             const res = await request(app)
@@ -40,7 +38,7 @@ describe("Analytics Routes", () => {
             expect(res.body.TotalSize).toBe(1);
         });
 
-        it("should return 0 TotalViews when no analytics exist", async () => {
+        it("should return 0 TotalViews when no DailyAnalytics exist yet", async () => {
             const noViewRows = [
                 {
                     id: "article-uuid",

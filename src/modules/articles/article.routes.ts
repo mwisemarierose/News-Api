@@ -19,8 +19,6 @@ import {
 
 const router = Router();
 
-// ─── Author-only (MUST come before /:id to avoid route shadowing) ─────────────
-
 /**
  * GET /articles/me
  * US8: Author's own articles (draft + published, optional deleted)
