@@ -14,7 +14,7 @@ jest.mock("argon2", () => ({
 }));
 
 describe("Auth Routes", () => {
-    // ─── POST /auth/signup ───────────────────────────────────────────────────
+    //  POST /auth/signup 
 
     describe("POST /auth/signup", () => {
         const validPayload = {
@@ -88,7 +88,7 @@ describe("Auth Routes", () => {
         });
     });
 
-    // ─── POST /auth/login ────────────────────────────────────────────────────
+    //POST /auth/login 
 
     describe("POST /auth/login", () => {
         const loginPayload = { email: "jane@example.com", password: "Str0ng!Pass" };

@@ -23,7 +23,7 @@ const mockArticle = {
 };
 
 describe("Articles Routes", () => {
-    // ─── POST /articles ───────────────────────────────────────────────────────
+    // POST /articles
 
     describe("POST /articles", () => {
         const payload = {
@@ -79,7 +79,7 @@ describe("Articles Routes", () => {
         });
     });
 
-    // ─── GET /articles ────────────────────────────────────────────────────────
+    // GET /articles
 
     describe("GET /articles", () => {
         it("should return paginated published articles", async () => {
@@ -108,7 +108,7 @@ describe("Articles Routes", () => {
         });
     });
 
-    // ─── GET /articles/:id ────────────────────────────────────────────────────
+    // GET /articles/:id 
 
     describe("GET /articles/:id", () => {
         it("should return article and trigger read log for guest", async () => {
@@ -144,7 +144,7 @@ describe("Articles Routes", () => {
         });
     });
 
-    // ─── PUT /articles/:id ────────────────────────────────────────────────────
+    //PUT /articles/:id 
 
     describe("PUT /articles/:id", () => {
         it("should update own article", async () => {
@@ -179,7 +179,7 @@ describe("Articles Routes", () => {
         });
     });
 
-    // ─── DELETE /articles/:id ─────────────────────────────────────────────────
+    // DELETE /articles/:id 
 
     describe("DELETE /articles/:id", () => {
         it("should soft-delete own article (set deletedAt)", async () => {
@@ -211,7 +211,7 @@ describe("Articles Routes", () => {
         });
     });
 
-    // ─── GET /articles/me ─────────────────────────────────────────────────────
+    // GET /articles/me 
 
     describe("GET /articles/me", () => {
         it("should return author's own articles (drafts + published)", async () => {

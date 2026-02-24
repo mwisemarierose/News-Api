@@ -22,7 +22,7 @@ const mockDashboardRows = [
 ];
 
 describe("Analytics Routes", () => {
-    // ─── GET /author/dashboard ────────────────────────────────────────────────
+    // ─── GET /author/dashboard 
 
     describe("GET /author/dashboard", () => {
         it("should return paginated dashboard with TotalViews summed from DailyAnalytics", async () => {
@@ -85,7 +85,7 @@ describe("Analytics Routes", () => {
     });
 });
 
-// ─── Analytics Worker (Job Aggregation Logic) ─────────────────────────────────
+// Analytics Worker (Job Aggregation Logic)
 
 describe("Analytics Worker - processAnalytics", () => {
     it("should aggregate read logs and upsert into DailyAnalytics", async () => {
