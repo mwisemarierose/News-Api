@@ -39,7 +39,7 @@ export function optionalAuthenticate(req: Request, _res: Response, next: NextFun
         try {
             req.user = verifyToken(token);
         } catch {
-            // Invalid token — ignore and continue as guest
+            console.warn("Invalid token in optionalAuthenticate:", token);
         }
     }
     next();

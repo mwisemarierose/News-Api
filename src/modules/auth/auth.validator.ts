@@ -16,7 +16,8 @@ export const signupSchema = z.object({
             "Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
         ),
     role: z.enum(["author", "reader"] as const, {
-        error: "Role must be either \"author\" or \"reader\"",
+        invalid_type_error: 'Role must be either "author" or "reader"',
+        required_error: "Role is required",
     }),
 });
 

@@ -19,34 +19,11 @@ import {
 
 const router = Router();
 
-// ─── Public endpoints ─────────────────────────────────────────────────────────
-
-/**
- * GET /articles
- * US4: Public news feed — published + not deleted, filterable, paginated
- */
-router.get(
-    "/",
-    validateQuery(articleQuerySchema),
-    getPublishedArticlesHandler
-);
-
-/**
- * GET /articles/:id
- * US5: Article detail — optionally authenticated, triggers read log
- */
-router.get(
-    "/:id",
-    optionalAuthenticate,
-    readRateLimiter,
-    getArticleByIdHandler
-);
-
-// ─── Author-only endpoints ────────────────────────────────────────────────────
+// ─── Author-only (MUST come before /:id to avoid route shadowing) ─────────────
 
 /**
  * GET /articles/me
- * US8: Author's own articles (draft + published, optional deleted filter)
+ * US8: Author's own articles (draft + published, optional deleted)
  */
 router.get(
     "/me",
@@ -85,5 +62,28 @@ router.put(
  * US3: Soft-delete own article
  */
 router.delete("/:id", authenticate, requireRole("author"), deleteArticleHandler);
+
+// ─── Public endpoints (/:id MUST be last — it's a catch-all param) ───────────
+
+/**
+ * GET /articles
+ * US4: Public news feed — published + not deleted, filterable, paginated
+ */
+router.get(
+    "/",
+    validateQuery(articleQuerySchema),
+    getPublishedArticlesHandler
+);
+
+/**
+ * GET /articles/:id
+ * US5: Article detail — optionally authenticated, triggers read log
+ */
+router.get(
+    "/:id",
+    optionalAuthenticate,
+    readRateLimiter,
+    getArticleByIdHandler
+);
 
 export default router;

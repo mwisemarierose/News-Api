@@ -14,7 +14,12 @@
     "test": "jest --runInBand --forceExit",
     "test:coverage": "jest --runInBand --forceExit --coverage"
   },
-  "keywords": ["news", "api", "nodejs", "typescript"],
+  "keywords": [
+    "news",
+    "api",
+    "nodejs",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -30,6 +35,8 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "uuid": "^11.1.0",
     "zod": "^3.24.2"
   },
@@ -42,6 +49,8 @@
     "@types/node": "^22.13.5",
     "@types/node-cron": "^3.0.11",
     "@types/supertest": "^6.0.2",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "@types/uuid": "^10.0.0",
     "jest": "^29.7.0",
     "jest-mock-extended": "^4.0.0-beta1",
@@ -55,11 +64,17 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "roots": ["<rootDir>/tests"],
-    "testMatch": ["**/*.test.ts"],
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "testMatch": [
+      "**/*.test.ts"
+    ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "setupFiles": ["<rootDir>/tests/setup.ts"]
+    "setupFiles": [
+      "<rootDir>/tests/setup.ts"
+    ]
   }
 }

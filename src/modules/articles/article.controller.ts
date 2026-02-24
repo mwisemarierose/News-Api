@@ -68,8 +68,11 @@ export async function getPublishedArticlesHandler(req: Request, res: Response, n
 
 export async function getArticleByIdHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
+        console.log("req.user:", req.user);
+
         const id = req.params["id"] as string;
         const readerId = req.user?.sub ?? undefined;
+        console.log("readerId:", readerId);
         const article = await getArticleById(id, readerId);
         sendSuccess(res, "Article retrieved", article);
     } catch (err) {
