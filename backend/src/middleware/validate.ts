@@ -34,9 +34,6 @@ export function validateQuery(schema: ZodSchema) {
             sendError(res, "Query validation failed", errors, 422);
             return;
         }
-        // In Express 5, `req.query` is a read-only property on the Request object,
-        // so we cannot reassign it. Instead, we merge the validated values into
-        // the existing query object.
         Object.assign(req.query, result.data);
         next();
     };

@@ -33,7 +33,6 @@ export function authenticate(req: Request, res: Response, next: NextFunction): v
  * Optionally parse JWT if present; does NOT reject unauthenticated requests.
  */
 export function optionalAuthenticate(req: Request, _res: Response, next: NextFunction): void {
-    console.log("Authorization header:", req.headers.authorization);
     const authHeader = req.headers.authorization;
     if (authHeader?.startsWith("Bearer ")) {
         const token = authHeader.split(" ")[1];

@@ -21,20 +21,20 @@ async function main() {
 
     // Validate format
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-        console.error(`❌ Invalid date format: "${date}". Expected YYYY-MM-DD.`);
+        console.error(` Invalid date format: "${date}". Expected YYYY-MM-DD.`);
         process.exit(1);
     }
 
-    console.log(`\n🔄 Running analytics aggregation for date: ${date} (GMT)\n`);
+    console.log(`\n Running analytics aggregation for date: ${date} (GMT)\n`);
 
     await processAnalytics({ data: { date } } as any);
 
-    console.log(`\n✅ Done. Check DailyAnalytics in your database or hit GET /author/dashboard.\n`);
+    console.log(`\n Done. Check DailyAnalytics in your database or hit GET /author/dashboard.\n`);
     await prisma.$disconnect();
 }
 
 main().catch((err) => {
-    console.error("❌ Script failed:", err);
+    console.error(" Script failed:", err);
     prisma.$disconnect();
     process.exit(1);
 });

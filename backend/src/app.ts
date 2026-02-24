@@ -14,7 +14,7 @@ import { sendError } from "./utils/response";
 
 const app = express();
 
-// ─── Security & Parsing Middleware ────────────────────────────────────────────
+// Security & Parsing Middleware 
 app.use(
     helmet({
         // Allow Swagger UI inline scripts/styles
@@ -25,12 +25,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ─── Request Logging (skip in tests) ─────────────────────────────────────────
+// Request Logging (skip in tests) 
 if (process.env.NODE_ENV !== "test") {
     app.use(morgan("dev"));
 }
 
-// ─── Swagger UI ───────────────────────────────────────────────────────────────
+// Swagger UI 
 app.use(
     "/api-docs",
     swaggerUi.serve,
@@ -50,22 +50,22 @@ app.use(
     })
 );
 
-// ─── Health Check ─────────────────────────────────────────────────────────────
+// Health Check 
 app.get("/health", (_req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-// ─── Routes ───────────────────────────────────────────────────────────────────
+// Routes 
 app.use("/auth", authRoutes);
 app.use("/articles", articleRoutes);
 app.use("/author", analyticsRoutes);
 
-// ─── 404 Handler ─────────────────────────────────────────────────────────────
+// 404 Handler
 app.use((_req, res) => {
     sendError(res, "Route not found", [], 404);
 });
 
-// ─── Global Error Handler ────────────────────────────────────────────────────
+// Global Error Handler 
 app.use(errorHandler);
 
 export default app;
