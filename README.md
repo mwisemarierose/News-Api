@@ -147,18 +147,31 @@ To prevent a single user from generating 100 ReadLog entries in 10 seconds, `GET
 ##  Project Structure
 
 ```
-src/
-  config/           # Prisma & Redis singletons
-  middleware/        # Auth, RBAC, validation, error handler, rate limiter
-  modules/
-    auth/            # Signup, login
-    articles/        # CRUD + public feed + read tracking
-    analytics/       # Author dashboard
-  jobs/              # BullMQ queue, worker, cron scheduler
-  utils/             # JWT helpers, response helpers
-  app.ts             # Express app
-  server.ts          # Entry point
-prisma/
-  schema.prisma      # DB schema
-tests/               # Jest unit tests (mocked DB)
+News API/               # Repository Root
+│
+├── README.md           # Documentation (root)
+├── .gitignore          # Git ignore file (root)
+├── .env.example        # Environment config example (root)
+├── .git/               # Git metadata
+│
+└── backend/            # All code, logic, and configs
+    ├── .env                # Actual environment settings
+    ├── package.json        # Backend dependencies/scripts
+    ├── package-lock.json   # Backend lock file
+    ├── tsconfig.json       # TypeScript config
+    ├── node_modules/       # Installed dependencies
+    ├── src/                # Source code
+    │   ├── config/         # Prisma & Redis singletons
+    │   ├── middleware/     # Auth, RBAC, validation, error handler, rate limiter
+    │   ├── modules/
+    │   │   ├── auth/       # Signup, login
+    │   │   ├── articles/   # CRUD + public feed + read tracking
+    │   │   ├── analytics/  # Author dashboard
+    │   ├── jobs/           # BullMQ queue, worker, cron scheduler
+    │   ├── utils/          # JWT helpers, response helpers
+    │   ├── app.ts          # Express app
+    │   └── server.ts       # Entry point
+    ├── tests/              # Jest unit tests (mocked DB)
+    ├── scripts/            # Utility scripts
+    └── prisma/             # Prisma schema and migrations
 ```
